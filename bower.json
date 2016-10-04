@@ -1,0 +1,16 @@
+{
+  "name": "entity-table",
+  "description": "AngularJS Entity Table component",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "semantic": "~2.2.2",
+    "angular": "~1.5.8",
+    "angular-resource": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "angular-loader": "~1.5.8",
+    "angular-mocks": "~1.5.8",
+    "html5-boilerplate": "~5.2.0",
+    "ngstorage": "^0.3.10"
+  }
+}

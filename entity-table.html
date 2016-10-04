@@ -1,0 +1,80 @@
+<div class="ui basic segment entity-table-segment">
+    <div class="ui dimmer">
+        <div class="ui loader"></div>
+    </div>
+
+    <div class="ui menu">
+        <a class="item" ng-click="newAction()">
+            <i class="ui icon file"></i>
+            Новый
+        </a>
+        <a class="item" ng-click="editAction()">
+            <i class="ui icon pencil"></i>
+            Редактировать
+        </a>
+        <a class="item" ng-click="deleteAction()">
+            <i class="ui icon remove"></i>
+            Удалить
+        </a>
+        <a class="right item" ng-click="refreshAction()">
+            <i class="ui icon refresh"></i>
+            Обновить
+        </a>
+    </div>
+
+<table class="ui compact celled table">
+	<thead>
+	    <tr>
+            <th></th>
+            <th ng-repeat="entityField in schema.fields">
+                {{ entityField.name }}
+            </th>
+	    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td ng-repeat="entityField in schema.fields">
+                <div class="ui fluid transparent input">
+                    <input placeholder="Поиск..." type="text">
+                </div>
+            </td>
+	    </tr>
+    <tr ng-repeat="entity in entities">
+        <td class="center aligned">
+            <div class="ui radio checkbox">
+                <input name="radio" checked="checked" type="radio" value="{{ entity[schema.indexId] }}">
+            </div>
+        </td>
+        <td ng-repeat="entityField in schema.fields">
+            <div ng-if="entityField.nested">
+                <a ng-if="entityField.link" href="{{ entity[entityField.id][entityField.nestedSchema.source] }}/{{ entity[entityField.id][entityField.nestedSchema.indexId] }}">
+                    {{ entity[entityField.id][entityField.nestedSchema.linkTextId] }}
+                </a>
+            </div>
+            <div ng-if="!entityField.nested && entityField.enum === undefined">
+                {{ entity[entityField.id] }}
+            </div>
+            <div ng-if="!entityField.nested && entityField.enum !== undefined">
+                {{ entityField.enum[entity[entityField.id]] }}
+            </div>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr ng-if="$ctrl.jsonPagination == true && pagination !== undefined">
+            <th colspan="{{ schema.fields.length + 1 }}">
+	            <div class="ui right floated pagination menu">
+	                <a class="icon item">
+	                    <i class="left chevron icon"></i>
+	                </a>
+                    <a ng-repeat="itm in pagesArr" class="item" ng-class="(pagination.page == itm-1) ? 'active' : ''" ng-click="pageChangeAction(itm-1)">{{ itm }}</a>
+	                <a class="icon item">
+	                    <i class="right chevron icon"></i>
+	                </a>
+	            </div>
+	        </th>
+	    </tr>
+    </tfoot>
+</table>
+</div>
