@@ -3,6 +3,7 @@
   "description": "AngularJS Entity Table component",
   "version": "0.0.1",
   "private": true,
+  "main": "entity-table.js",
   "dependencies": {
     "semantic": "~2.2.2",
     "angular": "~1.5.8",
