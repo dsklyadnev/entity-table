@@ -1,5 +1,5 @@
 angular.module('sample').component('entityTable', {
-  templateUrl: '/components/entity-table/entity-table.html',
+  templateUrl: 'entity-table.html',
   controller: function($scope, $location, $timeout, Api) {
     $scope.schema = $.extend(true, {}, $scope.$ctrl.schema);
     $scope.schema.fields = [];
